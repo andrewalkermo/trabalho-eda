@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include "includes/fila.h"
 int main() {
-    fila *a;
-    inicia(a);
+    fila *filaClientes =(fila *) malloc(sizeof(filaClientes));
+    inicia(filaClientes);
     unsigned int caixasDisponiveis; //M
     unsigned int clientesQtn;       //N
     unsigned int clienteCod;        //C
@@ -12,8 +12,10 @@ int main() {
     scanf("%u%u", &caixasDisponiveis, &clientesQtn);
 
     for (size_t i = 0; i < clientesQtn; i++) {
-        scanf("%u%u%u\n", &clienteCod, &operacao, &valor);
-    }
+        scanf("%u%u%u", &clienteCod, &operacao, &valor);
+        insere(filaClientes, clienteCod);
 
+    }
+    printf("%u\n", primeiro(filaClientes));
     return 0;
 }
